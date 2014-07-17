@@ -1,8 +1,8 @@
 package cn.agilean.demo.loan;
 
-public class LoanRequest {
+public class LoanApplyDataFolder {
 	int years;
-	public void setYears(int years) {
+	public void setLoanPeriod(int years) {
 		this.years = years;
 	}
 

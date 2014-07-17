@@ -6,20 +6,23 @@ import org.junit.Test;
 
 public class TestEligibilityExamination {
 	@Test
-	public void LoanRequestMoreThanThirtyYearShouldBeRejected()
+	public void LoanPeriodMoreThanThirtyYearShouldBeRejected()
 	{
-		LoanRequest r = new LoanRequest();
-		r.setYears(31);
+		LoanApplyDataFolder r = new LoanApplyDataFolder();
+		r.setLoanPeriod(31);
 		assertEquals(false,r.approval());
 	}
 	
 	@Test
-	public void LoanRequestLessOrEqualThirtyYearCouldBeAccepted()
+	public void LoanPeriodLessOrEqualThirtyYearCouldBeAccepted()
 	{
-		LoanRequest r = new LoanRequest();
-		r.setYears(30);
+		LoanApplyDataFolder r = new LoanApplyDataFolder();
+		r.setLoanPeriod(30);
 		assertEquals(true,r.approval());
 	}
 	
+//	@Test
+//	public void 
+//	
 
 }
