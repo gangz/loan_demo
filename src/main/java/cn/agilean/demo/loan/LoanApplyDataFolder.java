@@ -7,17 +7,18 @@ public class LoanApplyDataFolder {
 		this.years = years;
 	}
 
-	public boolean approval() {
-		if (years>30) return false;
-		if (suitesNum>=3) return false;
-		return true;
+	public int getLoanPeriod(){
+		return years;
 	}
-
+	
 	public void setSuitesNum(int suitesNum) {
 		this.suitesNum = suitesNum;
-		
 	}
 
+	public int getSuitesNum(){
+		return suitesNum;
+	}
+	
 	public void setTotalPrice(int i) {
 		// TODO Auto-generated method stub
 		
