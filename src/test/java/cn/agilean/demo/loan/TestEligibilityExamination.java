@@ -42,13 +42,13 @@ public class TestEligibilityExamination {
 		loanDataFolder.setSuitesNum(2);
 		assertEquals(true, eligibilityApproval.approve(loanDataFolder));
 	}
-//	//@Test
-//	public void FirstPaymentShouldReachThirtyPercentForFirstSuite()
-//	{
-//		r.setSuitesNum(1);
-//		r.setTotalPrice(100);
-//		r.setFirstPayment(30);
-//		assertEquals(true, r.approval());
-//	}
+	
+	@Test
+	public void FirstPaymentShouldReachThirtyPercentForFirstSuite()
+	{
+		loanDataFolder.setTotalPrice(100)
+		              .setFirstPayment(29.999999);
+		assertEquals(false, eligibilityApproval.approve(loanDataFolder));
+	}
 
 }

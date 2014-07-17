@@ -3,6 +3,8 @@ package cn.agilean.demo.loan;
 public class LoanApplyDataFolder {
 	int years;
 	int suitesNum;
+	private double totalPrice;
+	private double firstPayment;
 	
 	public LoanApplyDataFolder(){
 		
@@ -25,14 +27,21 @@ public class LoanApplyDataFolder {
 		return suitesNum;
 	}
 	
-	public void setTotalPrice(int i) {
-		// TODO Auto-generated method stub
-		
+	public LoanApplyDataFolder setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+		return this;
 	}
 
-	public void setFirstPayment(int i) {
-		// TODO Auto-generated method stub
-		
+	public double getTotalPrice() {
+		return this.totalPrice;
 	}
 
+	public LoanApplyDataFolder setFirstPayment(double firstPayment) {
+		this.firstPayment = firstPayment;
+		return this;
+	}
+
+	public double getFirstPayment() {
+		return this.firstPayment;
+	}
 }

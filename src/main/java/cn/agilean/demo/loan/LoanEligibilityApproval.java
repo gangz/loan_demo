@@ -8,6 +8,7 @@ public class LoanEligibilityApproval {
 		strategies = new ArrayList<IEligibilityStrategy>();
 		strategies.add(new LoanPeriodStrategy());
 		strategies.add(new ThirdSuiteForbiddenStrategy());
+		strategies.add(new FirstPaymentStrategy());
 	}
 	
 	public boolean approve(LoanApplyDataFolder dataFolder) {
