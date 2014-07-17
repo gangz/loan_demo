@@ -3,16 +3,22 @@ package cn.agilean.demo.loan;
 public class LoanApplyDataFolder {
 	int years;
 	int suitesNum;
-	public void setLoanPeriod(int years) {
+	
+	public LoanApplyDataFolder(){
+		
+	}
+	public LoanApplyDataFolder setLoanPeriod(int years) {
 		this.years = years;
+		return this;
 	}
 
 	public int getLoanPeriod(){
 		return years;
 	}
 	
-	public void setSuitesNum(int suitesNum) {
+	public LoanApplyDataFolder setSuitesNum(int suitesNum) {
 		this.suitesNum = suitesNum;
+		return this;
 	}
 
 	public int getSuitesNum(){

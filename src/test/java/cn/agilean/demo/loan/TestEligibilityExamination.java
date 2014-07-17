@@ -12,6 +12,8 @@ public class TestEligibilityExamination {
 	public void setUp(){
 		loanDataFolder = new LoanApplyDataFolder();
 		eligibilityApproval = new LoanEligibilityApproval();
+		loanDataFolder.setLoanPeriod(5)
+					  .setSuitesNum(1);
 	}
 	@Test
 	public void LoanPeriodMoreThanThirtyYearShouldBeRejected()
@@ -32,6 +34,13 @@ public class TestEligibilityExamination {
 	{
 		loanDataFolder.setSuitesNum(3);
 		assertEquals(false, eligibilityApproval.approve(loanDataFolder));
+	}
+	
+	@Test
+	public void LessThanThirdSuiteLoanCouldBeAccepted()
+	{
+		loanDataFolder.setSuitesNum(2);
+		assertEquals(true, eligibilityApproval.approve(loanDataFolder));
 	}
 //	//@Test
 //	public void FirstPaymentShouldReachThirtyPercentForFirstSuite()
