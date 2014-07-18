@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class TestEligibilityByCoBorrower {
+public class TestEligibilityByCoBorrowerRelation {
 	LoanApplyDataFolder loanDataFolder;
 	LoanEligibilityApproval eligibilityApproval;
 	ICreditService creditService;
