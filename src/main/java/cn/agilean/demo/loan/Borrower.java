@@ -11,6 +11,7 @@ public class Borrower {
 	boolean isHost;
 	int suitesNum;
 	private double monthlyIncome;
+	private int existingDebts;
 
 
 	public Borrower(PersonID id)
@@ -81,4 +82,11 @@ public class Borrower {
 		return this.monthlyIncome;
 	}
 
+	public void setExistingDebts(int existingDebts) {
+		this.existingDebts = existingDebts;
+	}
+
+	public double getExistingDebts(){
+		return this.existingDebts;
+	}
 }

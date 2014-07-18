@@ -19,10 +19,14 @@ public class LoanAmountApproval {
 	public double getAmount(LoanApplyDataFolder dataFolder) {
 		double amount = dataFolder.getAppliedAmount();
 		double totalIncome = dataFolder.getPrimaryBorrower().getMonthlyIncome();
+		
+		double totalExistingDebts = dataFolder.getPrimaryBorrower().getExistingDebts();
 		for(Borrower coBorrower:dataFolder.getCoBorrowers()){
 			totalIncome +=coBorrower.getMonthlyIncome();
+			totalExistingDebts+=coBorrower.getExistingDebts();
 		}
-		double canBeUsedInPayment = totalIncome/3;
+		
+		double canBeUsedInPayment = totalIncome/3-totalExistingDebts;
 		int repaymentMonths = loanYearsApproval.getLoanApprovedYears(dataFolder)*12;
 		
 		double repayableAmount = calculator.getCaptial(canBeUsedInPayment, repaymentMonths, interestsPolicy.getMonthlyInterestRatio(dataFolder.getPrimaryBorrower().getSuiteNum())); 

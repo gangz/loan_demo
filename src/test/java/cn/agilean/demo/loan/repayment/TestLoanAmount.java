@@ -65,5 +65,13 @@ public class TestLoanAmount {
 		assertEquals(1000000, approval.getAmount(dataFolder),0.01);
 	}
 
+	@Test
+	public void LoanAmountWithExistingDebts()
+	{
+		primaryBorrower.setMonthlyIncome(6000*3);
+		primaryBorrower.setExistingDebts(1000);
+		Mockito.when(dateTimeService.now()).thenReturn(new DateTime("2010-01-01"));
+		assertEquals(777005.48, approval.getAmount(dataFolder),0.01);
+	}
 		
 }
