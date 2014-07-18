@@ -17,12 +17,14 @@ public class LoanApplyDataFolder {
 		this.appliedYears = appliedYears;
 		return this;
 	}
-
+	
 	public int getLoanAppliedYears(){
 		return appliedYears;
 	}
 	
-
+	public int getLoanApprovedYears(){
+		return appliedYears>30?30:appliedYears;
+	}
 	
 	public LoanApplyDataFolder setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
