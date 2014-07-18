@@ -9,9 +9,11 @@ import cn.agilean.demo.loan.repayment.DateTimeService;
 
 public class LoanApplyDataFolder {
 	int appliedYears;
+	private double firstPayment;
+	
 	private double totalPrice;
 	private DateTime buildDate;
-	private double firstPayment;
+
 	
 	private Borrower primaryBorrower;
 	private ArrayList<Borrower> coBorrowers;
