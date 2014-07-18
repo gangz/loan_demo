@@ -1,14 +1,16 @@
 package cn.agilean.demo.loan;
 
+import java.util.ArrayList;
+
 public class LoanApplyDataFolder {
 	int years;
 	int suitesNum;
 	private double totalPrice;
 	private double firstPayment;
 	private PersonID primaryBorrowerID;
-	
+	private ArrayList<CoBorrower> coBorrowers;
 	public LoanApplyDataFolder(){
-		
+		coBorrowers = new ArrayList<CoBorrower>();
 	}
 	public LoanApplyDataFolder setLoanPeriod(int years) {
 		this.years = years;
@@ -52,5 +54,12 @@ public class LoanApplyDataFolder {
 	}
 	public PersonID getPrimaryBorrowerID() {
 		return primaryBorrowerID;
+	}
+	
+	public void addCoBorrower(CoBorrower coBorrower) {
+		this.coBorrowers.add(coBorrower);
+	}
+	public ArrayList<CoBorrower> getCoBorrowers() {
+		return this.coBorrowers;
 	}
 }
