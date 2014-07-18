@@ -3,32 +3,26 @@ package cn.agilean.demo.loan;
 import java.util.ArrayList;
 
 public class LoanApplyDataFolder {
-	int years;
-	int suitesNum;
+	int appliedYears;
 	private double totalPrice;
 	private double firstPayment;
-	private PersonID primaryBorrowerID;
-	private ArrayList<CoBorrower> coBorrowers;
+	
+	private Borrower primaryBorrower;
+	private ArrayList<Borrower> coBorrowers;
+	
 	public LoanApplyDataFolder(){
-		coBorrowers = new ArrayList<CoBorrower>();
+		coBorrowers = new ArrayList<Borrower>();
 	}
-	public LoanApplyDataFolder setLoanPeriod(int years) {
-		this.years = years;
+	public LoanApplyDataFolder setLoanAppliedYears(int appliedYears) {
+		this.appliedYears = appliedYears;
 		return this;
 	}
 
-	public int getLoanPeriod(){
-		return years;
+	public int getLoanAppliedYears(){
+		return appliedYears;
 	}
 	
-	public LoanApplyDataFolder setSuitesNum(int suitesNum) {
-		this.suitesNum = suitesNum;
-		return this;
-	}
 
-	public int getSuitesNum(){
-		return suitesNum;
-	}
 	
 	public LoanApplyDataFolder setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
@@ -48,18 +42,18 @@ public class LoanApplyDataFolder {
 		return this.firstPayment;
 	}
 	
-	public LoanApplyDataFolder setPrimaryBorrowerID(PersonID primaryBorrowerID){
-		this.primaryBorrowerID =primaryBorrowerID;
+	public LoanApplyDataFolder setPrimaryBorrower(Borrower primaryBorrower){
+		this.primaryBorrower =primaryBorrower;
 		return this; 
 	}
-	public PersonID getPrimaryBorrowerID() {
-		return primaryBorrowerID;
+	public Borrower getPrimaryBorrower() {
+		return primaryBorrower;
 	}
 	
-	public void addCoBorrower(CoBorrower coBorrower) {
+	public void addCoBorrower(Borrower coBorrower) {
 		this.coBorrowers.add(coBorrower);
 	}
-	public ArrayList<CoBorrower> getCoBorrowers() {
+	public ArrayList<Borrower> getCoBorrowers() {
 		return this.coBorrowers;
 	}
 }

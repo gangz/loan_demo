@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import cn.agilean.demo.loan.CoBorrower;
+import cn.agilean.demo.loan.Borrower;
 import cn.agilean.demo.loan.ICreditService;
 import cn.agilean.demo.loan.LoanApplyDataFolder;
 import cn.agilean.demo.loan.LoanEligibilityApproval;
@@ -22,7 +22,7 @@ public class TestEligibilityByCoBorrowerShouldBeHost {
 	public void setUp(){
 		loanDataFolder = new LoanApplyDataFolder();
 		eligibilityApproval = new LoanEligibilityApproval();
-		loanDataFolder.setPrimaryBorrowerID(new PersonID("310101yyyymmdd1234"));
+		loanDataFolder.setPrimaryBorrower(new Borrower(new PersonID("310101yyyymmdd1234")));
 		
 		creditService = Mockito.mock(ICreditService.class);
 		
@@ -35,7 +35,7 @@ public class TestEligibilityByCoBorrowerShouldBeHost {
 	public void NoHusbandWifeRelationAndNotHostShouldBeRejected()
 	{
 		loanDataFolder.addCoBorrower(
-				new CoBorrower(new PersonID("310101yyyymmdd0001"),Relation.SISTER,false)
+				new Borrower(new PersonID("310101yyyymmdd0001"),Relation.SISTER,false)
 				);
 		
 		assertEquals(false, eligibilityApproval.approve(loanDataFolder));
@@ -45,7 +45,7 @@ public class TestEligibilityByCoBorrowerShouldBeHost {
 	public void HusbandWifeRelationDoNotNeedHost()
 	{
 		loanDataFolder.addCoBorrower(
-				new CoBorrower(new PersonID("310101yyyymmdd0001"),Relation.WIFE,false)
+				new Borrower(new PersonID("310101yyyymmdd0001"),Relation.WIFE,false)
 				);
 		
 		assertEquals(true, eligibilityApproval.approve(loanDataFolder));

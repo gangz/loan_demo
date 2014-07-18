@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import cn.agilean.demo.loan.Borrower;
 import cn.agilean.demo.loan.CreditQueryResult;
 import cn.agilean.demo.loan.ICreditService;
 import cn.agilean.demo.loan.LoanApplyDataFolder;
@@ -21,7 +22,7 @@ public class TestEligibilityByCredit {
 	public void setUp(){
 		loanDataFolder = new LoanApplyDataFolder();
 		eligibilityApproval = new LoanEligibilityApproval();
-		loanDataFolder.setPrimaryBorrowerID(new PersonID("310101yyyymmdd1234"));
+		loanDataFolder.setPrimaryBorrower(new Borrower(new PersonID("310101yyyymmdd1234")));
 		creditService = Mockito.mock(ICreditService.class);
 		
 		CreditStrategy creditStrategy = new CreditStrategy();

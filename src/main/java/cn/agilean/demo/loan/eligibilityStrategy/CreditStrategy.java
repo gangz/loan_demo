@@ -9,7 +9,7 @@ import cn.agilean.demo.loan.PersonID;
 public class CreditStrategy implements IEligibilityStrategy {
 	ICreditService creditService;
 	public boolean approve(LoanApplyDataFolder dataFolder) {
-		PersonID id = dataFolder.getPrimaryBorrowerID();
+		PersonID id = dataFolder.getPrimaryBorrower().getID();
 		CreditQueryResult creditResult =getCredit(id); 
 		if (creditResult.getLevel() ==creditResult.LEVEL_A ||
 			creditResult.getLevel() ==creditResult.LEVEL_B  ||
