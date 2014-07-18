@@ -13,6 +13,7 @@ import cn.agilean.demo.loan.Gender;
 import cn.agilean.demo.loan.ICreditService;
 import cn.agilean.demo.loan.LoanApplyDataFolder;
 import cn.agilean.demo.loan.LoanEligibilityApproval;
+import cn.agilean.demo.loan.LoanYearsApproval;
 import cn.agilean.demo.loan.PersonID;
 import cn.agilean.demo.loan.eligibilityStrategy.CreditStrategy;
 
@@ -20,12 +21,14 @@ public class TestRepaymentYears {
 	LoanApplyDataFolder loanDataFolder;
 	Borrower primaryBorrower;
 	DateTimeService dateTimeService;
+	LoanYearsApproval loanYearsApproval;
 	@Before
 	public void setUp(){
 		loanDataFolder = new LoanApplyDataFolder();
 		primaryBorrower = new Borrower(new PersonID("310101195001010000"));//1950-01-01
 		loanDataFolder.setPrimaryBorrower(primaryBorrower);
 		
+		loanYearsApproval = new LoanYearsApproval();
 		primaryBorrower.setGender(Gender.MALE);
 
 		dateTimeService = Mockito.mock(DateTimeService.class);
@@ -39,14 +42,14 @@ public class TestRepaymentYears {
 	public void ApplyMoreThanThirtyYearsShouldOnlyApproveThirtyYears()
 	{
 		loanDataFolder.setLoanAppliedYears(31);
-		assertEquals(30, loanDataFolder.getLoanApprovedYears());
+		assertEquals(30, loanYearsApproval.getLoanApprovedYears(loanDataFolder));
 	}
 
 	@Test
 	public void ApplyLessThanThirtyYearsShouldApproveActualYears()
 	{
 		loanDataFolder.setLoanAppliedYears(29);
-		assertEquals(29, loanDataFolder.getLoanApprovedYears());
+		assertEquals(29, loanYearsApproval.getLoanApprovedYears(loanDataFolder));
 	}
 	
 	@Test
@@ -59,7 +62,7 @@ public class TestRepaymentYears {
 		primaryBorrower.setGender(Gender.MALE);
 		Mockito.when(dateTimeService.now()).thenReturn(new DateTime("2014-01-01"));
 		
-		assertEquals(1, loanDataFolder.getLoanApprovedYears());
+		assertEquals(1, loanYearsApproval.getLoanApprovedYears(loanDataFolder));
 	}
 	
 	@Test
@@ -71,7 +74,7 @@ public class TestRepaymentYears {
 		primaryBorrower.setGender(Gender.FEMALE);
 		Mockito.when(dateTimeService.now()).thenReturn(new DateTime("2009-01-01"));
 		
-		assertEquals(1, loanDataFolder.getLoanApprovedYears());
+		assertEquals(1, loanYearsApproval.getLoanApprovedYears(loanDataFolder));
 	}
 	
 }

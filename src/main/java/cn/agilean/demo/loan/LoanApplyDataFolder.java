@@ -20,27 +20,10 @@ public class LoanApplyDataFolder {
 		return this;
 	}
 	
-	public int getLoanAppliedYears(){
+	public int getAppliedYears(){
 		return appliedYears;
 	}
 	
-	public int getLoanApprovedYears(){
-		int approveYears = maxLeftEarnableYears(primaryBorrower);
-		approveYears = (approveYears>30)?30:approveYears;
-		approveYears = (approveYears>appliedYears)?appliedYears:approveYears;
-		return approveYears;
-	}
-	
-	private int maxLeftEarnableYears(Borrower borrower) {
-		int leftEarnableYears;
-		if (borrower.getGender()==Gender.MALE)
-			leftEarnableYears = 65-borrower.getAge();
-		else
-			leftEarnableYears = 60-borrower.getAge();
-		if (leftEarnableYears <0)
-			leftEarnableYears = 0;
-		return leftEarnableYears;
-	}
 	public LoanApplyDataFolder setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 		return this;
@@ -73,5 +56,6 @@ public class LoanApplyDataFolder {
 	public ArrayList<Borrower> getCoBorrowers() {
 		return this.coBorrowers;
 	}
+
 
 }
