@@ -9,4 +9,11 @@ public class PaymentCalculator {
 		return monthlyPayment;
 	}
 
+	public double getCaptial(double monthlyPayment, int months, double monthlyInterestRatio) {
+		double capital =  monthlyPayment * ((Math.pow((1+ monthlyInterestRatio), months)-1)) /
+				(monthlyInterestRatio * (Math.pow((1+monthlyInterestRatio),months)));
+
+		return capital;
+	}
+
 }
