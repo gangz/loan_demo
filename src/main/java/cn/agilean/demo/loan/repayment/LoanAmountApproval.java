@@ -1,5 +1,6 @@
 package cn.agilean.demo.loan.repayment;
 
+import cn.agilean.demo.loan.Borrower;
 import cn.agilean.demo.loan.LoanApplyDataFolder;
 
 public class LoanAmountApproval {
@@ -18,6 +19,9 @@ public class LoanAmountApproval {
 	public double getAmount(LoanApplyDataFolder dataFolder) {
 		double amount = dataFolder.getAppliedAmount();
 		double totalIncome = dataFolder.getPrimaryBorrower().getMonthlyIncome();
+		for(Borrower coBorrower:dataFolder.getCoBorrowers()){
+			totalIncome +=coBorrower.getMonthlyIncome();
+		}
 		double canBeUsedInPayment = totalIncome/3;
 		int repaymentMonths = loanYearsApproval.getLoanApprovedYears(dataFolder)*12;
 		

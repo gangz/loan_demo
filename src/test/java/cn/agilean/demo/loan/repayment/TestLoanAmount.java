@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import cn.agilean.demo.loan.Borrower;
 import cn.agilean.demo.loan.LoanApplyDataFolder;
 import cn.agilean.demo.loan.PersonID;
+import cn.agilean.demo.loan.eligibility.strategies.CoBorrowerHostStrategy;
 
 public class TestLoanAmount {
 	LoanApplyDataFolder dataFolder ;
@@ -52,6 +53,17 @@ public class TestLoanAmount {
 		primaryBorrower.setMonthlyIncome(6000*3);
 		Mockito.when(dateTimeService.now()).thenReturn(new DateTime("2010-01-01"));
 		assertEquals(932406.58, approval.getAmount(dataFolder),0.01);
+	}
+
+	@Test
+	public void LoanAmountEqualsApplyWithCoBorrower()
+	{
+		primaryBorrower.setMonthlyIncome(6000*3);
+		Borrower coBorrower = new Borrower(new PersonID("310101200001010000"));
+		coBorrower.setMonthlyIncome(455*3);
+		dataFolder.addCoBorrower(coBorrower);
+		Mockito.when(dateTimeService.now()).thenReturn(new DateTime("2010-01-01"));
+		assertEquals(1000000, approval.getAmount(dataFolder),0.01);
 	}
 
 		
