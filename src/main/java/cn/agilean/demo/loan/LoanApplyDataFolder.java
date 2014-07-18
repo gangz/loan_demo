@@ -5,6 +5,7 @@ public class LoanApplyDataFolder {
 	int suitesNum;
 	private double totalPrice;
 	private double firstPayment;
+	private String primaryBorrowerID;
 	
 	public LoanApplyDataFolder(){
 		
@@ -43,5 +44,13 @@ public class LoanApplyDataFolder {
 
 	public double getFirstPayment() {
 		return this.firstPayment;
+	}
+	
+	public LoanApplyDataFolder setPrimaryBorrowerID(String primaryBorrowerID){
+		this.primaryBorrowerID =primaryBorrowerID;
+		return this; 
+	}
+	public String getPrimaryBorrowerID() {
+		return primaryBorrowerID;
 	}
 }
