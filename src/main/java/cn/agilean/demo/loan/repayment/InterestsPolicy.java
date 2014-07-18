@@ -12,5 +12,7 @@ public class InterestsPolicy {
 			return point *110 /100;
 		return 0.0;
 	}
-
+	public double getMonthlyInterestRatio(int suiteCount) {
+		return getBasePoint(suiteCount)/12/100;
+	}
 }
