@@ -17,21 +17,27 @@ public class LoanAmountApproval {
 		this.interestsPolicy = interestsPolicy;
 	}
 	public double getAmount(LoanApplyDataFolder dataFolder) {
-		double amount = dataFolder.getAppliedAmount();
-		double totalIncome = dataFolder.getPrimaryBorrower().getMonthlyIncome();
-		
-		double totalExistingDebts = dataFolder.getPrimaryBorrower().getExistingDebts();
-		for(Borrower coBorrower:dataFolder.getCoBorrowers()){
-			totalIncome +=coBorrower.getMonthlyIncome();
-			totalExistingDebts+=coBorrower.getExistingDebts();
-		}
-		
-		double canBeUsedInPayment = totalIncome/3-totalExistingDebts;
+		double canBeUsedInPayment = totalIncome(dataFolder)/3-totalDebts(dataFolder);
 		int repaymentMonths = loanYearsApproval.getLoanApprovedYears(dataFolder)*12;
 		
 		double repayableAmount = calculator.getCaptial(canBeUsedInPayment, repaymentMonths, interestsPolicy.getMonthlyInterestRatio(dataFolder.getPrimaryBorrower().getSuiteNum())); 
-		if (repayableAmount<amount) amount = repayableAmount;
-		return  amount;
+        return repayableAmount<dataFolder.getAppliedAmount()? repayableAmount:dataFolder.getAppliedAmount();
+	}
+
+	private double totalDebts(LoanApplyDataFolder dataFolder) {
+		double totalExistingDebts = dataFolder.getPrimaryBorrower().getExistingDebts();
+		for(Borrower coBorrower:dataFolder.getCoBorrowers()){
+			totalExistingDebts+=coBorrower.getExistingDebts();
+		}
+		return totalExistingDebts;
+	}
+
+	private double totalIncome(LoanApplyDataFolder dataFolder) {
+		double totalIncome = dataFolder.getPrimaryBorrower().getMonthlyIncome();
+		for(Borrower coBorrower:dataFolder.getCoBorrowers()){
+			totalIncome +=coBorrower.getMonthlyIncome();
+		}
+		return totalIncome;
 	}
 
 }
