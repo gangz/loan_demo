@@ -1,4 +1,4 @@
-package cn.agilean.demo.loan;
+package cn.agilean.demo.loan.eligibility;
 
 public class CreditQueryResult {
 

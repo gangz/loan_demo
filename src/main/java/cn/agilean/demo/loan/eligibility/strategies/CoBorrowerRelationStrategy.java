@@ -1,11 +1,11 @@
-package cn.agilean.demo.loan.eligibilityStrategy;
+package cn.agilean.demo.loan.eligibility.strategies;
 
 import cn.agilean.demo.loan.Borrower;
-import cn.agilean.demo.loan.IEligibilityStrategy;
 import cn.agilean.demo.loan.LoanApplyDataFolder;
 import cn.agilean.demo.loan.Relation;
+import cn.agilean.demo.loan.eligibility.EligibilityStrategy;
 
-public class CoBorrowerRelationStrategy implements IEligibilityStrategy {
+public class CoBorrowerRelationStrategy implements EligibilityStrategy {
 
 	public boolean approve(LoanApplyDataFolder dataFolder) {
 		for (Borrower coBorowser:dataFolder.getCoBorrowers()){

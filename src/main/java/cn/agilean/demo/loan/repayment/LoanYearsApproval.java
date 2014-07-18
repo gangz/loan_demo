@@ -1,8 +1,10 @@
-package cn.agilean.demo.loan;
+package cn.agilean.demo.loan.repayment;
 
 import org.joda.time.DateTime;
 
-import cn.agilean.demo.loan.repayment.DateTimeService;
+import cn.agilean.demo.loan.Borrower;
+import cn.agilean.demo.loan.Gender;
+import cn.agilean.demo.loan.LoanApplyDataFolder;
 
 public class LoanYearsApproval {
 	

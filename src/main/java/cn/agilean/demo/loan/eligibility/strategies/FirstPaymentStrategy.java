@@ -1,9 +1,9 @@
-package cn.agilean.demo.loan.eligibilityStrategy;
+package cn.agilean.demo.loan.eligibility.strategies;
 
-import cn.agilean.demo.loan.IEligibilityStrategy;
 import cn.agilean.demo.loan.LoanApplyDataFolder;
+import cn.agilean.demo.loan.eligibility.EligibilityStrategy;
 
-public class FirstPaymentStrategy implements IEligibilityStrategy {
+public class FirstPaymentStrategy implements EligibilityStrategy {
 	public boolean approve(LoanApplyDataFolder dataFolder) {
 		if (getFirstPaymentPercent(dataFolder)<30) return false;
 		return true;

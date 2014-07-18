@@ -7,7 +7,8 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import cn.agilean.demo.loan.LoanApplyDataFolder;
-import cn.agilean.demo.loan.LoanEligibilityApproval;
+import cn.agilean.demo.loan.eligibility.LoanEligibilityApproval;
+import cn.agilean.demo.loan.eligibility.strategies.FirstPaymentStrategy;
 
 public class TestEligibilityByFirstPaymentPercent {
 	LoanApplyDataFolder loanDataFolder;

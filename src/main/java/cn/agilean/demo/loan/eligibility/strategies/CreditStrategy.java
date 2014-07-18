@@ -1,13 +1,13 @@
-package cn.agilean.demo.loan.eligibilityStrategy;
+package cn.agilean.demo.loan.eligibility.strategies;
 
-import cn.agilean.demo.loan.CreditQueryResult;
-import cn.agilean.demo.loan.ICreditService;
-import cn.agilean.demo.loan.IEligibilityStrategy;
 import cn.agilean.demo.loan.LoanApplyDataFolder;
 import cn.agilean.demo.loan.PersonID;
+import cn.agilean.demo.loan.eligibility.CreditQueryResult;
+import cn.agilean.demo.loan.eligibility.CreditService;
+import cn.agilean.demo.loan.eligibility.EligibilityStrategy;
 
-public class CreditStrategy implements IEligibilityStrategy {
-	ICreditService creditService;
+public class CreditStrategy implements EligibilityStrategy {
+	CreditService creditService;
 	public boolean approve(LoanApplyDataFolder dataFolder) {
 		PersonID id = dataFolder.getPrimaryBorrower().getID();
 		CreditQueryResult creditResult =getCredit(id); 
@@ -21,7 +21,7 @@ public class CreditStrategy implements IEligibilityStrategy {
 		return creditService.getCredit(id);
 	}
 
-	public void setCreditService(ICreditService creditService) {
+	public void setCreditService(CreditService creditService) {
 		this.creditService  = creditService;
 	}
 }
