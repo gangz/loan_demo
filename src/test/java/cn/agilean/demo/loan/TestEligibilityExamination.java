@@ -61,16 +61,31 @@ public class TestEligibilityExamination {
 	@Test
 	public void CreditLevelDShouldBeRejected()
 	{
-		loanDataFolder.setPrimaryBorrowerID("310101yyyymmdd1234");
+		loanDataFolder.setPrimaryBorrowerID(new PersonID("310101yyyymmdd1234"));
 		ICreditService creditService = Mockito.mock(ICreditService.class);
 		
 		CreditStrategy creditStrategy = new CreditStrategy();
 		creditStrategy.setCreditService(creditService);
 		eligibilityApproval.addStrategy(creditStrategy);
 		
-
-		Mockito.when(creditService.getCreditLevel(Mockito.anyString())).thenReturn("D");
+		CreditQueryResult result = new CreditQueryResult(CreditQueryResult.LEVEL_D, CreditQueryResult.OK);
+		Mockito.when(creditService.getCredit((PersonID)(Mockito.any()))).thenReturn(result);
 		assertEquals(false, eligibilityApproval.approve(loanDataFolder));
+	}
+	
+	@Test
+	public void CreditLevelCCouldBeAccepted()
+	{
+		loanDataFolder.setPrimaryBorrowerID(new PersonID("310101yyyymmdd1234"));
+		ICreditService creditService = Mockito.mock(ICreditService.class);
+		
+		CreditStrategy creditStrategy = new CreditStrategy();
+		creditStrategy.setCreditService(creditService);
+		eligibilityApproval.addStrategy(creditStrategy);
+		
+		CreditQueryResult result = new CreditQueryResult(CreditQueryResult.LEVEL_C, CreditQueryResult.OK);
+		Mockito.when(creditService.getCredit((PersonID)(Mockito.any()))).thenReturn(result);
+		assertEquals(true, eligibilityApproval.approve(loanDataFolder));
 	}
 
 }

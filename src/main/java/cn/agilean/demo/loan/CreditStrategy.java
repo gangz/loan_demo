@@ -3,17 +3,16 @@ package cn.agilean.demo.loan;
 public class CreditStrategy implements IEligibilityStrategy {
 	ICreditService creditService;
 	public boolean approve(LoanApplyDataFolder dataFolder) {
-		String id = dataFolder.getPrimaryBorrowerID();
-		String creditLevel =getCreditStrategy(id); 
-		if (creditLevel =="A" ||
-			creditLevel=="B" ||
-			creditLevel=="C" ) return true;
+		PersonID id = dataFolder.getPrimaryBorrowerID();
+		CreditQueryResult creditResult =getCredit(id); 
+		if (creditResult.getLevel() ==creditResult.LEVEL_A ||
+			creditResult.getLevel() ==creditResult.LEVEL_B  ||
+			creditResult.getLevel() ==creditResult.LEVEL_C  ) return true;
 		return false;
 	}
 
-	private String getCreditStrategy(String id) {
-		if (creditService==null) return "fail";
-		return creditService.getCreditLevel(id);
+	private CreditQueryResult getCredit(PersonID id) {
+		return creditService.getCredit(id);
 	}
 
 	public void setCreditService(ICreditService creditService) {
