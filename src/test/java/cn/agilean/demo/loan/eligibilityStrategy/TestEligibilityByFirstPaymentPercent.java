@@ -1,10 +1,13 @@
-package cn.agilean.demo.loan;
+package cn.agilean.demo.loan.eligibilityStrategy;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+
+import cn.agilean.demo.loan.LoanApplyDataFolder;
+import cn.agilean.demo.loan.LoanEligibilityApproval;
 
 public class TestEligibilityByFirstPaymentPercent {
 	LoanApplyDataFolder loanDataFolder;

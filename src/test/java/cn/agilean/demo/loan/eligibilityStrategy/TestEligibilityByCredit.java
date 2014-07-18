@@ -1,10 +1,17 @@
-package cn.agilean.demo.loan;
+package cn.agilean.demo.loan.eligibilityStrategy;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+
+import cn.agilean.demo.loan.CreditQueryResult;
+import cn.agilean.demo.loan.ICreditService;
+import cn.agilean.demo.loan.LoanApplyDataFolder;
+import cn.agilean.demo.loan.LoanEligibilityApproval;
+import cn.agilean.demo.loan.PersonID;
+import cn.agilean.demo.loan.eligibilityStrategy.CreditStrategy;
 
 public class TestEligibilityByCredit {
 	LoanApplyDataFolder loanDataFolder;

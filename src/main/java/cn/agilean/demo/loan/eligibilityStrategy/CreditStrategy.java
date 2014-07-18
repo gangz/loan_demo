@@ -1,4 +1,10 @@
-package cn.agilean.demo.loan;
+package cn.agilean.demo.loan.eligibilityStrategy;
+
+import cn.agilean.demo.loan.CreditQueryResult;
+import cn.agilean.demo.loan.ICreditService;
+import cn.agilean.demo.loan.IEligibilityStrategy;
+import cn.agilean.demo.loan.LoanApplyDataFolder;
+import cn.agilean.demo.loan.PersonID;
 
 public class CreditStrategy implements IEligibilityStrategy {
 	ICreditService creditService;

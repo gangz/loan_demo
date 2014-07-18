@@ -1,4 +1,9 @@
-package cn.agilean.demo.loan;
+package cn.agilean.demo.loan.eligibilityStrategy;
+
+import cn.agilean.demo.loan.CoBorrower;
+import cn.agilean.demo.loan.IEligibilityStrategy;
+import cn.agilean.demo.loan.LoanApplyDataFolder;
+import cn.agilean.demo.loan.Relation;
 
 public class CoBorrowerRelationStrategy implements IEligibilityStrategy {
 

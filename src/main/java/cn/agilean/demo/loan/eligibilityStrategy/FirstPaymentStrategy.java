@@ -1,4 +1,7 @@
-package cn.agilean.demo.loan;
+package cn.agilean.demo.loan.eligibilityStrategy;
+
+import cn.agilean.demo.loan.IEligibilityStrategy;
+import cn.agilean.demo.loan.LoanApplyDataFolder;
 
 public class FirstPaymentStrategy implements IEligibilityStrategy {
 	public boolean approve(LoanApplyDataFolder dataFolder) {
