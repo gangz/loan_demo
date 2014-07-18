@@ -2,11 +2,15 @@ package cn.agilean.demo.loan;
 
 import java.util.ArrayList;
 
+import org.joda.time.DateTime;
+import org.joda.time.base.AbstractDateTime;
+
 import cn.agilean.demo.loan.repayment.DateTimeService;
 
 public class LoanApplyDataFolder {
 	int appliedYears;
 	private double totalPrice;
+	private DateTime buildDate;
 	private double firstPayment;
 	
 	private Borrower primaryBorrower;
@@ -55,6 +59,12 @@ public class LoanApplyDataFolder {
 	}
 	public ArrayList<Borrower> getCoBorrowers() {
 		return this.coBorrowers;
+	}
+	public void setHouseBuildDate(DateTime buildDate) {
+		this.buildDate = buildDate;  
+	}
+	public DateTime getHouseBuildDate() {
+		return this.buildDate;
 	}
 
 

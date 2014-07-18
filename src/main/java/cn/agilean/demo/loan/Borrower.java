@@ -14,12 +14,7 @@ public class Borrower {
 	boolean isHost;
 	int suitesNum;
 
-	DateTimeService dateTimeService;
-	public void setDateTimeService(DateTimeService dateTimeService)
-	{
-		this.dateTimeService = dateTimeService;
-	}
-	
+
 	public Borrower(PersonID id)
 	{
 		this.id = id;
@@ -68,19 +63,14 @@ public class Borrower {
 		this.id = id;
 	}
 
-	public int getAge() {
-		
-		DateTime now = dateTimeService.now();
-		int nowYear = now.getYear();
-		
+	public DateTime getBirthDate() {
 		String chinaID = id.getID();
 		String birthDateString = chinaID.substring(6,10) + "-" +
 								 chinaID.substring(10,12)+ "-" +
 								 chinaID.substring(12,14);
-		DateTime birthDate = DateTime.parse(birthDateString);
-		int birthYear = birthDate.getYear();
-		
-		return nowYear-birthYear;
+		return DateTime.parse(birthDateString);
 	}
+
+	
 
 }

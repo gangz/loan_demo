@@ -32,9 +32,10 @@ public class TestRepaymentYears {
 		primaryBorrower.setGender(Gender.MALE);
 
 		dateTimeService = Mockito.mock(DateTimeService.class);
-		primaryBorrower.setDateTimeService(dateTimeService);
+		loanYearsApproval.setDateTimeService(dateTimeService);
 		Mockito.when(dateTimeService.now()).thenReturn(new DateTime("1950-01-01"));
-		
+
+		loanDataFolder.setHouseBuildDate(new DateTime("2009-01-01"));
 	}
 
 
@@ -78,5 +79,13 @@ public class TestRepaymentYears {
 	}
 	
 
-	
+	@Test
+	public void RepaymentYearsShouldNotExceed40YearForHouseAge()
+	{
+		loanDataFolder.setLoanAppliedYears(29);
+		loanDataFolder.setHouseBuildDate(new DateTime("1970-01-01"));
+		Mockito.when(dateTimeService.now()).thenReturn(new DateTime("2009-01-01"));
+		
+		assertEquals(1, loanYearsApproval.getLoanApprovedYears(loanDataFolder));
+	}
 }
