@@ -6,4 +6,8 @@ public class PersonID {
 		this.id = id;
 	}
 	
+	public String getID(){
+		return id;
+	}
+	
 }

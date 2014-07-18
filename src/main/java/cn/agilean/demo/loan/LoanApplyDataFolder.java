@@ -2,6 +2,8 @@ package cn.agilean.demo.loan;
 
 import java.util.ArrayList;
 
+import cn.agilean.demo.loan.repayment.DateTimeService;
+
 public class LoanApplyDataFolder {
 	int appliedYears;
 	private double totalPrice;
@@ -23,9 +25,22 @@ public class LoanApplyDataFolder {
 	}
 	
 	public int getLoanApprovedYears(){
-		return appliedYears>30?30:appliedYears;
+		int approveYears = maxLeftEarnableYears(primaryBorrower);
+		approveYears = (approveYears>30)?30:approveYears;
+		approveYears = (approveYears>appliedYears)?appliedYears:approveYears;
+		return approveYears;
 	}
 	
+	private int maxLeftEarnableYears(Borrower borrower) {
+		int leftEarnableYears;
+		if (borrower.getGender()==Gender.MALE)
+			leftEarnableYears = 65-borrower.getAge();
+		else
+			leftEarnableYears = 60-borrower.getAge();
+		if (leftEarnableYears <0)
+			leftEarnableYears = 0;
+		return leftEarnableYears;
+	}
 	public LoanApplyDataFolder setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 		return this;
@@ -58,4 +73,5 @@ public class LoanApplyDataFolder {
 	public ArrayList<Borrower> getCoBorrowers() {
 		return this.coBorrowers;
 	}
+
 }
