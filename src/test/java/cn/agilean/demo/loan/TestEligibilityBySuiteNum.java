@@ -6,37 +6,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class TestEligibilityExamination {
+public class TestEligibilityBySuiteNum {
 	LoanApplyDataFolder loanDataFolder;
 	LoanEligibilityApproval eligibilityApproval;
 	@Before
 	public void setUp(){
 		loanDataFolder = new LoanApplyDataFolder();
 		eligibilityApproval = new LoanEligibilityApproval();
-		loanDataFolder.setLoanPeriod(5)
-					  .setSuitesNum(1);
+		eligibilityApproval.addStrategy(new ThirdSuiteForbiddenStrategy());
+		
 	}
-	@Test
-	public void LoanPeriodMoreThanThirtyYearShouldBeRejected()
-	{
-		eligibilityApproval.addStrategy(new LoanPeriodStrategy());
-		loanDataFolder.setLoanPeriod(31);
-		assertEquals(false,eligibilityApproval.approve(loanDataFolder));
-	}
-	
-	@Test
-	public void LoanPeriodLessOrEqualThirtyYearCouldBeAccepted()
-	{
-		eligibilityApproval.addStrategy(new LoanPeriodStrategy());
-		loanDataFolder.setLoanPeriod(30);
-		assertEquals(true,eligibilityApproval.approve(loanDataFolder));
-	}
-	
+
 	@Test
 	public void ForbiddenThirdSuiteLoan()
 	{
-
-		eligibilityApproval.addStrategy(new ThirdSuiteForbiddenStrategy());
 		loanDataFolder.setSuitesNum(3);
 		assertEquals(false, eligibilityApproval.approve(loanDataFolder));
 	}
@@ -44,7 +27,6 @@ public class TestEligibilityExamination {
 	@Test
 	public void LessThanThirdSuiteLoanCouldBeAccepted()
 	{
-		eligibilityApproval.addStrategy(new ThirdSuiteForbiddenStrategy());
 		loanDataFolder.setSuitesNum(2);
 		assertEquals(true, eligibilityApproval.approve(loanDataFolder));
 	}
@@ -88,4 +70,18 @@ public class TestEligibilityExamination {
 		assertEquals(true, eligibilityApproval.approve(loanDataFolder));
 	}
 
+	@Test
+	public void NoCreditDataShouldBeRejected()
+	{
+		loanDataFolder.setPrimaryBorrowerID(new PersonID("310101yyyymmdd1234"));
+		ICreditService creditService = Mockito.mock(ICreditService.class);
+		
+		CreditStrategy creditStrategy = new CreditStrategy();
+		creditStrategy.setCreditService(creditService);
+		eligibilityApproval.addStrategy(creditStrategy);
+		
+		CreditQueryResult result = new CreditQueryResult(null, CreditQueryResult.STATUS_NO_DATA);
+		Mockito.when(creditService.getCredit((PersonID)(Mockito.any()))).thenReturn(result);
+		assertEquals(false, eligibilityApproval.approve(loanDataFolder));
+	}
 }
