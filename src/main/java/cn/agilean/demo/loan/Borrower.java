@@ -13,6 +13,7 @@ public class Borrower {
 	
 	boolean isHost;
 	int suitesNum;
+	private double monthlyIncome;
 
 
 	public Borrower(PersonID id)
@@ -21,6 +22,8 @@ public class Borrower {
 		this.relation = Relation.SELF;
 		this.isHost = true;
 		this.gender = Gender.FEMALE;
+		this.suitesNum = 1;
+		this.monthlyIncome = 0;
 	}
 	
 	public Borrower(PersonID id, Relation relation, boolean isHost) {
@@ -28,6 +31,8 @@ public class Borrower {
 		this.relation = relation;
 		this.isHost = isHost;
 		this.gender = Gender.FEMALE;
+		this.suitesNum = 1;
+		this.monthlyIncome = 0;
 	}
 	
 	public boolean isHost(){
@@ -71,6 +76,12 @@ public class Borrower {
 		return DateTime.parse(birthDateString);
 	}
 
-	
+	public void setMonthlyIncome(double monthlyIncome) {
+		this.monthlyIncome = monthlyIncome;
+	}
+
+	public double getMonthlyIncome() {
+		return this.monthlyIncome;
+	}
 
 }

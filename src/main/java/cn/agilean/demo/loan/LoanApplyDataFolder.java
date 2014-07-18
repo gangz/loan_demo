@@ -68,6 +68,9 @@ public class LoanApplyDataFolder {
 	public DateTime getHouseBuildDate() {
 		return this.buildDate;
 	}
+	public double getAppliedAmount() {
+		return totalPrice-firstPayment;
+	}
 
 
 }
