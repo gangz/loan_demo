@@ -3,9 +3,6 @@ package cn.agilean.demo.loan;
 import java.util.ArrayList;
 
 import org.joda.time.DateTime;
-import org.joda.time.base.AbstractDateTime;
-
-import cn.agilean.demo.loan.repayment.DateTimeService;
 
 public class LoanApplyDataFolder {
 	int appliedYears;

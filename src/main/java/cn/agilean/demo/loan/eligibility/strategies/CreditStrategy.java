@@ -11,9 +11,9 @@ public class CreditStrategy implements EligibilityStrategy {
 	public boolean approve(LoanApplyDataFolder dataFolder) {
 		PersonID id = dataFolder.getPrimaryBorrower().getID();
 		CreditQueryResult creditResult =getCredit(id); 
-		if (creditResult.getLevel() ==creditResult.LEVEL_A ||
-			creditResult.getLevel() ==creditResult.LEVEL_B  ||
-			creditResult.getLevel() ==creditResult.LEVEL_C  ) return true;
+		if (creditResult.getLevel() ==CreditQueryResult.LEVEL_A ||
+			creditResult.getLevel() ==CreditQueryResult.LEVEL_B  ||
+			creditResult.getLevel() ==CreditQueryResult.LEVEL_C  ) return true;
 		return false;
 	}
 

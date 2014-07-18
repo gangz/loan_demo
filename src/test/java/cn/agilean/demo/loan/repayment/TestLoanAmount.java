@@ -10,7 +10,6 @@ import org.mockito.Mockito;
 import cn.agilean.demo.loan.Borrower;
 import cn.agilean.demo.loan.LoanApplyDataFolder;
 import cn.agilean.demo.loan.PersonID;
-import cn.agilean.demo.loan.eligibility.strategies.CoBorrowerHostStrategy;
 
 public class TestLoanAmount {
 	LoanApplyDataFolder dataFolder ;

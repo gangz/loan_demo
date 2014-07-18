@@ -4,15 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import cn.agilean.demo.loan.Borrower;
 import cn.agilean.demo.loan.LoanApplyDataFolder;
 import cn.agilean.demo.loan.PersonID;
-import cn.agilean.demo.loan.eligibility.CreditQueryResult;
-import cn.agilean.demo.loan.eligibility.CreditService;
 import cn.agilean.demo.loan.eligibility.LoanEligibilityApproval;
-import cn.agilean.demo.loan.eligibility.strategies.CreditStrategy;
 import cn.agilean.demo.loan.eligibility.strategies.ThirdSuiteForbiddenStrategy;
 
 public class TestEligibilityBySuiteNum {

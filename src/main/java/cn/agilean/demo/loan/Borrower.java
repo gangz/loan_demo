@@ -2,9 +2,6 @@ package cn.agilean.demo.loan;
 
 import org.joda.time.DateTime;
 
-import cn.agilean.demo.loan.repayment.DateTimeService;
-
-
 public class Borrower {
 	PersonID id;
 	Gender gender;
