@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class TestEligibilityByCoBorrowerRelation {
+public class TestEligibilityByCoBorrowerShouldBeHost {
 	LoanApplyDataFolder loanDataFolder;
 	LoanEligibilityApproval eligibilityApproval;
 	ICreditService creditService;
@@ -18,29 +18,31 @@ public class TestEligibilityByCoBorrowerRelation {
 		
 		creditService = Mockito.mock(ICreditService.class);
 		
-		CoBorrowerRelationStrategy strategy = new CoBorrowerRelationStrategy();
+		CoBorrowerHostStrategy strategy = new CoBorrowerHostStrategy();
 		eligibilityApproval.addStrategy(strategy);
 	}
 
 
 	@Test
-	public void NotDirectRelationCoBorrowerShouldBeRejected()
+	public void NoHusbandWifeRelationAndNotHostShouldBeRejected()
 	{
 		loanDataFolder.addCoBorrower(
-				new CoBorrower(new PersonID("310101yyyymmdd0001"),Relation.OTHER,true)
+				new CoBorrower(new PersonID("310101yyyymmdd0001"),Relation.SISTER,false)
 				);
 		
 		assertEquals(false, eligibilityApproval.approve(loanDataFolder));
 	}
 	
 	@Test
-	public void DirectRelationCoBorrowerShouldBeRejected()
+	public void HusbandWifeRelationDoNotNeedHost()
 	{
 		loanDataFolder.addCoBorrower(
-				new CoBorrower(new PersonID("310101yyyymmdd0001"),Relation.WIFE,true)
-				);		
+				new CoBorrower(new PersonID("310101yyyymmdd0001"),Relation.WIFE,false)
+				);
+		
 		assertEquals(true, eligibilityApproval.approve(loanDataFolder));
 	}
+	
 	
 	
 }
