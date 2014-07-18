@@ -77,4 +77,6 @@ public class TestRepaymentYears {
 		assertEquals(1, loanYearsApproval.getLoanApprovedYears(loanDataFolder));
 	}
 	
+
+	
 }
