@@ -1,17 +1,13 @@
 var java = require("java");
 java.classpath.push('loan.jar');
 
-var DataFolder =java.import('cn.agilean.demo.loan.LoanApplyDataFolder');
-var Borrower = java.import('cn.agilean.demo.loan.Borrower');
-
 var InterestsPolicy =  java.import('cn.agilean.demo.loan.repayment.InterestsPolicy') ;
-var LoanAmountApproval = java.import('cn.agilean.demo.loan.repayment.LoanAmountApproval') ;
+
+var Borrower = java.import('cn.agilean.demo.loan.Borrower');
+var DataFolder =java.import('cn.agilean.demo.loan.LoanApplyDataFolder');
 var LocalCreditService = java.import('cn.agilean.demo.loan.eligibility.LocalCreditService') ;
 var LoanApprovalFacade = java.import('cn.agilean.demo.loan.LoanApprovalFacade') ;
 var LoanApprovalResult = java.import('cn.agilean.demo.loan.LoanApprovalResult') ;
-
-var CreditQueryResult = java.import('cn.agilean.demo.loan.eligibility.CreditQueryResult');
-var PersonID = java.import('cn.agilean.demo.loan.PersonID');
 
 function isValidID(s)
 {
@@ -78,7 +74,7 @@ module.exports = function(app) {
 		the_primary_borrower_gender: '男',
 		the_primary_borrower_suites: '1',
 		the_primary_borrower_credit: 'A',
-		the_primary_borrower_monthly_income: '30000',
+		the_primary_borrower_monthly_income: '40000',
 		the_primary_borrower_current_debts:'0',
 		the_total_price: '1300000',
 		the_first_payment: '300000',
