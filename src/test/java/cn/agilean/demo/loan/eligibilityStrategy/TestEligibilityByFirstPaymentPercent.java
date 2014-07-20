@@ -27,4 +27,12 @@ public class TestEligibilityByFirstPaymentPercent {
 		assertEquals(false, eligibilityApproval.approve(loanDataFolder));
 	}
 	
+	@Test
+	public void FirstPaymentReachThirtyPercentForFirstSuiteCouldBeAccepted()
+	{
+		loanDataFolder.setTotalPrice(100)
+		              .setFirstPayment(30.01);
+		assertEquals(false, eligibilityApproval.approve(loanDataFolder));
+	}
+	
 }

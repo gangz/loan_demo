@@ -13,6 +13,11 @@ public class LoanAmountApproval {
 		loanYearsApproval.setDateTimeService(dateTimeService);
 	}
 	
+	public LoanAmountApproval() {
+		calculator = new PaymentCalculator();
+		loanYearsApproval = new LoanYearsApproval();
+	}
+
 	public void setInterestPolicy(InterestsPolicy interestsPolicy) {
 		this.interestsPolicy = interestsPolicy;
 	}

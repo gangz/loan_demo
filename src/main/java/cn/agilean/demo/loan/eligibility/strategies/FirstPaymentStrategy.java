@@ -10,6 +10,6 @@ public class FirstPaymentStrategy implements EligibilityStrategy {
 	}
 
 	private double getFirstPaymentPercent(LoanApplyDataFolder dataFolder) {
-		return dataFolder.getFirstPayment()/dataFolder.getTotalPrice();
+		return 100*dataFolder.getFirstPayment()/dataFolder.getTotalPrice();
 	}
 }

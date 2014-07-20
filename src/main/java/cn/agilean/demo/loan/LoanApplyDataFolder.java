@@ -62,6 +62,11 @@ public class LoanApplyDataFolder {
 	public void setHouseBuildDate(DateTime buildDate) {
 		this.buildDate = buildDate;  
 	}
+	
+	public void setHouseBuildDate(String buildDate) {
+		this.buildDate = new DateTime(buildDate);  
+	}
+	
 	public DateTime getHouseBuildDate() {
 		return this.buildDate;
 	}

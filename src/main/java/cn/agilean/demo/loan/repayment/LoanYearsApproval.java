@@ -18,6 +18,11 @@ public class LoanYearsApproval {
 		this.dateTimeService = dateTimeService;
 	}
 	
+	public LoanYearsApproval()
+	{
+		this.dateTimeService = new DefaultDateTimeService();
+	}
+	
 	public int getLoanApprovedYears(LoanApplyDataFolder dataFolder){
 		int approveYears = maxLeftEarnableYears(dataFolder.getPrimaryBorrower());
 		approveYears = (approveYears>MAX_LOAN_YEARS)?MAX_LOAN_YEARS:approveYears;

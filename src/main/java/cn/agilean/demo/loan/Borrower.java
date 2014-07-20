@@ -11,17 +11,34 @@ public class Borrower {
 	boolean isHost;
 	int suitesNum;
 	private double monthlyIncome;
-	private int existingDebts;
+	private double existingDebts;
 
-
-	public Borrower(PersonID id)
+	public Borrower(String id,int gender_id, int suitesNum,
+			double monthlyIncome, double existingDebts,boolean isHost)
 	{
-		this.id = id;
+		this.id = new PersonID(id);
+		gender = Gender.FEMALE;
+		if (gender_id==0)  gender = Gender.MALE;
+		this.suitesNum = suitesNum;
+		this.monthlyIncome = monthlyIncome;
+		this.existingDebts = existingDebts;
+		this.isHost = isHost;
+	}
+
+	
+	private void setDefaultValue() {
 		this.relation = Relation.SELF;
 		this.isHost = true;
 		this.gender = Gender.FEMALE;
 		this.suitesNum = 1;
 		this.monthlyIncome = 0;
+	}
+	
+
+	public Borrower(PersonID id)
+	{
+		this.id = id;
+		setDefaultValue();
 	}
 	
 	public Borrower(PersonID id, Relation relation, boolean isHost) {
