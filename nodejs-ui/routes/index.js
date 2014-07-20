@@ -6,7 +6,7 @@ var Borrower = java.import('cn.agilean.demo.loan.Borrower');
 
 var InterestsPolicy =  java.import('cn.agilean.demo.loan.repayment.InterestsPolicy') ;
 var LoanAmountApproval = java.import('cn.agilean.demo.loan.repayment.LoanAmountApproval') ;
-var LocalCreditService = java.import('cn.agilean.demo.loan.LocalCreditService') ;
+var LocalCreditService = java.import('cn.agilean.demo.loan.eligibility.LocalCreditService') ;
 var LoanApprovalFacade = java.import('cn.agilean.demo.loan.LoanApprovalFacade') ;
 var LoanApprovalResult = java.import('cn.agilean.demo.loan.LoanApprovalResult') ;
 

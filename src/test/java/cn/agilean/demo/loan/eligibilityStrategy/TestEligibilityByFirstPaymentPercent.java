@@ -32,7 +32,7 @@ public class TestEligibilityByFirstPaymentPercent {
 	{
 		loanDataFolder.setTotalPrice(100)
 		              .setFirstPayment(30.01);
-		assertEquals(false, eligibilityApproval.approve(loanDataFolder));
+		assertEquals(true, eligibilityApproval.approve(loanDataFolder));
 	}
 	
 }

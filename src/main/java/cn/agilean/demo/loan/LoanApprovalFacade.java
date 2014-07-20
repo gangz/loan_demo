@@ -24,7 +24,7 @@ public class LoanApprovalFacade {
 		eligibilityApproval.addStrategy(new ThirdSuiteForbiddenStrategy());
 		CreditStrategy creditStrategy = new CreditStrategy();
 		creditStrategy.setCreditService(creditService);
-		//eligibilityApproval.addStrategy(creditStrategy);
+		eligibilityApproval.addStrategy(creditStrategy);
 		
 		eligibilityApproval.addStrategy(new FirstPaymentStrategy());
 		eligibilityApproval.addStrategy(new CoBorrowerHostStrategy());
