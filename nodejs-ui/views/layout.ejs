@@ -5,12 +5,22 @@
     <title><%= title %> </title>
     <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        .radio-inline, .checkbox-inline {
+            display: inline-block;
+            padding-left: 20px;
+            margin-bottom: 0;
+            font-weight: 400;
+            vertical-align: middle;
+            cursor: pointer;
+        }
     </style>
-    <link href="stylesheets/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/stylesheets/datepicker.css" rel="stylesheet">
   </head>
   <body>
   
@@ -44,4 +54,11 @@
   </body>
   <script src="/javascripts/jquery.js"></script>
   <script src="/javascripts/bootstrap.js"></script>
+  <!-- TODO: ask Chenhao -->
+	<script src="/javascripts/bootstrap-datepicker.js"></script>
+	<script type="text/javascript">
+	    $(function () {
+	        $('#house_build_date').datepicker();
+	    });
+	</script>  
 </html>
