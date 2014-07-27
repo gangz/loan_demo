@@ -5,16 +5,13 @@ import cn.agilean.demo.loan.LoanApplyDataFolder;
 
 public class LoanAmountApproval {
 	InterestsPolicy interestsPolicy;
-	PaymentCalculator calculator;
 	LoanYearsApproval loanYearsApproval;
 	public LoanAmountApproval(DateTimeService dateTimeService) {
-		calculator = new PaymentCalculator();
 		loanYearsApproval = new LoanYearsApproval();
 		loanYearsApproval.setDateTimeService(dateTimeService);
 	}
 	
 	public LoanAmountApproval() {
-		calculator = new PaymentCalculator();
 		loanYearsApproval = new LoanYearsApproval();
 	}
 
@@ -25,7 +22,7 @@ public class LoanAmountApproval {
 		double canBeUsedInPayment = totalIncome(dataFolder)/3-totalDebts(dataFolder);
 		int repaymentMonths = loanYearsApproval.getLoanApprovedYears(dataFolder)*12;
 		
-		double repayableAmount = calculator.getCaptial(canBeUsedInPayment, repaymentMonths, interestsPolicy.getMonthlyInterestRatio(dataFolder.getPrimaryBorrower().getSuiteNum())); 
+		double repayableAmount = PaymentCalculator.calcCaptialFromMonthPayment(canBeUsedInPayment, repaymentMonths, interestsPolicy.getMonthlyInterestRatio(dataFolder.getPrimaryBorrower().getSuiteNum())); 
         return repayableAmount<dataFolder.getAppliedAmount()? repayableAmount:dataFolder.getAppliedAmount();
 	}
 

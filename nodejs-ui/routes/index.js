@@ -1,5 +1,5 @@
 var java = require("java");
-java.classpath.push('loan.jar');
+java.classpath.push('../target/loandemo-0.0.1-SNAPSHOT-jar-with-dependencies.jar');
 
 var InterestsPolicy =  java.import('cn.agilean.demo.loan.repayment.InterestsPolicy') ;
 
