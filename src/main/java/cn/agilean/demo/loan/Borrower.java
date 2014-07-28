@@ -14,6 +14,16 @@ public class Borrower {
 	private double existingDebts;
 
 	public Borrower(String id,int gender_id, int suitesNum,
+			double monthlyIncome, double existingDebts,boolean isHost,Relation relation)
+	{
+		this(id,gender_id,suitesNum,monthlyIncome,existingDebts,isHost);
+		this.relation = relation;
+	}
+
+	
+
+
+	public Borrower(String id,int gender_id, int suitesNum,
 			double monthlyIncome, double existingDebts,boolean isHost)
 	{
 		this.id = new PersonID(id);

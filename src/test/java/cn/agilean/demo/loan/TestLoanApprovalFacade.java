@@ -60,8 +60,8 @@ public class TestLoanApprovalFacade {
 				PRIMARY_BORROWER_MONTHLY_INCOME,
 				PRIMARY_BORROWER_EXISTING_DEBTS,
 				true);
-		
 		dataFolder.setPrimaryBorrower(primaryBorrower);
+
 	}
 
 	private LoanApplyDataFolder createApplyDataFolder() {
