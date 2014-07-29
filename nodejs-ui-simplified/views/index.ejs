@@ -1,0 +1,220 @@
+<div class="hero-unit">
+    <h1>房贷审批模拟</h1>
+    <p>欢迎使用房贷计算审批模拟程序</p>
+    <p>
+        <a class="btn btn-large" href="/rules">查看规则</a>
+    </p>
+</div>
+
+<form class="form-horizontal" method="post">
+
+    <div class="row">
+        <div class="span6">
+            <fieldset>
+                <legend>主贷人信息</legend>
+                <div class="control-group">
+                    <label class="control-label" for="primary_borrower_gender">性别</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="primary_borrower_gender"
+                               name="primary_borrower_gender" value=<%= the_primary_borrower_gender %> >
+                    </div>
+                </div>
+                <div class="control-group" >
+                    <label class="control-label" for="primary_borrower_age" >年龄</label>
+
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="primary_borrower_age"
+                               name="primary_borrower_age" value=<%= the_primary_borrower_age %> >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="primary_borrower_suites">第几套住房</label>
+
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="primary_borrower_suites"
+                               name="primary_borrower_suites" value=<%= the_primary_borrower_suites %> >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="primary_borrower_credit">信用等级</label>
+
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="primary_borrower_credit"
+                               name="primary_borrower_credit" value=<%= the_primary_borrower_credit %> >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="primary_borrower_monthly_income">月收入</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on" style="margin-right: -5px;">￥</span>
+                            <input type="text" class="input-large" id="primary_borrower_monthly_income"
+                                   name="primary_borrower_monthly_income" value=<%= the_primary_borrower_monthly_income %> >
+                            <span class="add-on" style="margin-left: -5px;">元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="primary_borrower_current_debts">现有贷款（每月还款额）</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on" style="margin-right: -5px;">￥</span>
+                            <input type="text" class="input-large" id="primary_borrower_current_debts"
+                                   name="primary_borrower_current_debts" value=<%= the_primary_borrower_current_debts %> >
+                            <span class="add-on" style="margin-left: -5px;">元</span>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </div>
+
+        <div class="span6">
+            <fieldset>
+                <legend>住房和房贷信息</legend>
+
+                <div class="control-group">
+                    <label class="control-label" for="house_build_date">房龄</label>
+
+                    <div class="controls">
+                        <input data-date="2010-01-01" data-date-format="yyyy-mm-dd"
+                               type="text" id="house_age" name="house_age" value=<%= the_house_age %>>
+                    </div>
+                </div>
+            </fieldset>
+
+        </div>
+    </div>
+   <div class="row">	
+        <div class="span6">
+            <fieldset>
+                <legend>共同贷款人信息</legend>
+                <div class="control-group">
+                    <label class="control-label" for="co_borrower_age">年龄</label>
+
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="co_borrower_age"
+                               name="co_borrower_age" value=<%= the_co_borrower_age %>>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="co_borrower_gender">性别</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="co_borrower_gender"
+                               name="co_borrower_gender" value=<%= the_co_borrower_gender %> >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="co_borrower_monthly_income">月收入</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on" style="margin-right: -5px;">￥</span>
+                            <input type="text" class="input-large" id="co_borrower_monthly_income"
+                                   name="co_borrower_monthly_income" value=<%= the_co_borrower_monthly_income %> >
+                            <span class="add-on" style="margin-left: -5px;">元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="co_borrower_current_debts">现有贷款（每月还款额）</label>
+
+                    <div class="controls">
+                        <div class="input-prepend input-append">
+                            <span class="add-on" style="margin-right: -5px;">￥</span>
+                            <input type="text" class="input-large" id="co_borrower_current_debts"
+                                   name="co_borrower_current_debts" value=<%= the_co_borrower_current_debts %> >
+                            <span class="add-on" style="margin-left: -5px;">元</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" for="co_borrower_relation">和主贷人的关系</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="co_borrower_relation"
+                               name="co_borrower_relation" value=<%= the_co_borrower_relation %> >
+                    </div>
+                </div>
+                
+			    <div class="control-group">
+			        <label class="control-label" for="co_borrorwer_is_host">房产所有人</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="co_borrower_is_host"
+                               name="co_borrower_is_host" value=<%= the_co_borrower_is_host %> >
+                    </div>
+	            </div>
+            </fieldset>
+        </div>
+	</div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary pull-right">贷款资格预估</button>
+    </div>
+
+    <div>
+        <fieldset>
+            <legend>审批结果</legend>
+            <div class="control-group">
+                <label class="control-label" for="check_result_credit">贷款资格检查结果（信用检查）</label>
+                <div class="controls">
+                    <div class="input-append">
+                        <input type="select" class="input-xlarge" id="check_result_credit" name="check_result_credit" value=<%= the_check_result_credit %>>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="check_result_suites">贷款资格检查结果（住房套数）</label>
+                <div class="controls">
+                    <div class="input-append">
+                        <input type="select" class="input-xlarge" id="check_result_suites" name="check_result_suites" value=<%= the_check_result_suites %>>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="co_borrower_check_result">共同贷款人资格检查</label>
+                <div class="controls">
+                    <div class="input-append">
+                        <input type="select" class="input-xlarge" id="co_borrower_check_result" name="co_borrower_check_result" value=<%= the_co_borrower_check_result %>>
+                    </div>
+                </div>
+            </div>
+             <div class="control-group">
+                <label class="control-label" for="result_interests">适用利率</label>
+
+                <div class="controls">
+                    <div class="input-append">
+                        <input type="text" class="input-large" id="result_interests" name="result_interests"
+                               value=<%= the_approved_interests %>>
+                        <span class="add-on" style="margin-left: -5px;">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="result_years">最大贷款年限</label>
+
+                <div class="controls">
+                    <div class="input-append">
+                        <input type="text" class="input-large" id="result_years" name="result_years" value=<%= the_approved_years %>>
+                        <span class="add-on" style="margin-left: -5px;">年</span>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="result_amount">最大月还款额</label>
+
+                <div class="controls">
+                    <div class="input-prepend input-append">
+                        <span class="add-on" style="margin-right: -5px;">￥</span>
+                        <input type="text" class="input-large" id="result_amount" name="result_amount" value=<%= the_approved_amount %>>
+                        <span class="add-on" style="margin-left: -5px;">元</span>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+</form>
+
+
