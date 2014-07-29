@@ -2,10 +2,10 @@ var express    = require('express');
 var bodyParser = require('body-parser');
 var java = require("java");
 
-var eligibility = require("./eligibility.js");
-var interest = require('./interest.js');
-var repayment = require('./repayment.js');
-var period = require('./period.js');
+var eligibility = require("../app/eligibility.js");
+var interest = require('../app/interest.js');
+var repayment = require('../app/repayment.js');
+var period = require('../app/period.js');
 
 module.exports = exports = function(app) { 
 	

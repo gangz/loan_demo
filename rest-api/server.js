@@ -11,4 +11,4 @@ var router = require('./router/router.js');
 router(app);
 
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Start RESTful API server of loan demo on port ' + port);
