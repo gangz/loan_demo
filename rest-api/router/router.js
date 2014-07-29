@@ -4,6 +4,8 @@ var java = require("java");
 
 var eligibility = require("./eligibility.js");
 var interest = require('./interest.js');
+var repayment = require('./repayment.js');
+var period = require('./period.js');
 
 module.exports = exports = function(app) { 
 	
@@ -45,8 +47,27 @@ router.route('/interest-policy/:suiteCount')
 	.get(function(req,res){
 		var result = interest.getPolicy(req.params.suiteCount);
 		res.json({ 'interest strategy': result });	
+	})	
+	
+router.route('/max/month-repayment/:income/:exist_debts')
+	.get(function(req,res){
+		var result = repayment.getMonthLimit(req.params.income,req.params.exist_debts,0,0);
+		res.json({ 'maximum monthly repayment': result });	
+	})	
+	
+router.route('/max/month-repayment/:income/:exist_debts/:co_income/:co_exist_debts')
+	.get(function(req,res){
+		var result = repayment.getMonthLimit(req.params.income,req.params.exist_debts,
+				req.params.co_income,req.params.co_exist_debts);
+		res.json({ 'maximum monthly repayment': result });	
 	})		
 	
+router.route('/max/period/:age/:gender/:houseAge')	
+	.get(function(req,res){
+		var result = period.getPeriodLimit(req.params.age,req.params.gender,
+				req.params.houseAge);
+		res.json({ 'maximum loan period': result });	
+	})	
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);
 }
