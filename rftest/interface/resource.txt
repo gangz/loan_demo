@@ -1,0 +1,7 @@
+*** Settings ***
+Library           Collections
+Library           RequestsLibrary
+
+*** Keywords ***
+connect to server
+    Create Session    loan    http://localhost:3001

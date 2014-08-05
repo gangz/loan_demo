@@ -1,0 +1,25 @@
+*** Settings ***
+Documentation     商业银行在贷款前需要向征信管理部门查询贷款人的信用报告。
+...               不良记录超过银行相关规定（信用评级为D）的话，无法获得贷款。
+...               征信记录为A,B,C三级的可以获得贷款。
+...               如果没有查询到信用记录，则返回征信记录不存在。
+Suite Setup       打开首页
+Suite Teardown    关闭当前网页
+Resource          resource.txt
+
+*** Test Cases ***    信用等级          审查结果
+信用审查                  [Tags]        completed
+                      [Template]    信用审查流程
+                      NA            信用记录不存在
+                      a             符合
+                      b             符合
+                      c             符合
+                      d             不符合
+                      e             不符合
+
+*** Keywords ***
+信用审查流程
+    [Arguments]    ${credit}    ${result}
+    设定主贷人信用等级    ${credit}
+    提交审核
+    信用检查结果应该是    ${result}

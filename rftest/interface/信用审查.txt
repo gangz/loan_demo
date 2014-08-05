@@ -1,0 +1,21 @@
+*** Settings ***
+Resource          resource.txt
+
+*** Test Cases ***    参数            结果
+信用审查                  [Tags]        completed
+                      [Template]    接口调用
+                      NA            信用记录不存在
+                      a             符合
+                      b             符合
+                      c             符合
+                      d             不符合
+                      e             不符合
+
+*** Keywords ***
+接口调用
+    [Arguments]    ${arg}    ${return_value}
+    connect to server
+    ${resp}    Get    loan    /api/check/credit/${arg}
+    ${jsondata}=    To JSON    ${resp.content}
+    ${result}    Collections.Get From Dictionary    ${jsondata}    eligibility status
+    Should Be Equal    ${result}    ${return_value}

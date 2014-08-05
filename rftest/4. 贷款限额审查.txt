@@ -1,0 +1,34 @@
+*** Settings ***
+Test Setup        打开首页
+Test Teardown     关闭当前网页
+Resource          resource.txt
+
+*** Test Cases ***
+只有主贷款人时，贷款额度为收入减去现月贷的结果的1/3
+    [Tags]    completed
+    given 我的收入是 20000 元
+    and 我已经有 2000 元月贷
+    when 申请贷款时
+    then 最大贷款额是 6000 元
+
+贷款额度应该为贷款人的共同收入的1/3 减去现有贷款
+    [Tags]    non-completed
+    given my monthly income is 20000
+    and my co-loanee monthly income is 10000
+    and I have a debt of 2000 per month
+    and my co-loanee have a debt of 1000 month
+    when we loan together
+    then we can have a maxium credit of 7000
+
+*** Keywords ***
+我的收入是 ${monthly_income} 元
+    设定主贷人月收入    ${monthly_income}
+
+我已经有 ${monthly_loan} 元月贷
+    设定主贷人现有月贷款    ${monthly_loan}
+
+申请贷款时
+    提交审核
+
+最大贷款额是 ${max_loan} 元
+    最大月还款额应该是    ${max_loan}

@@ -1,0 +1,104 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Variables ***
+${SERVER}         localhost:3000
+${BROWSER}        firefox
+${DELAY}          0
+${LOGIN URL}      http://localhost:3000
+
+*** Keywords ***
+打开首页
+    Open Browser    ${LOGIN URL}    ${BROWSER}
+    Maximize Browser Window
+    Set Selenium Speed    ${DELAY}
+    Title Should Be    房贷审核演示程序
+
+网页标题应该是
+    [Arguments]    ${title}
+    Title Should Be    ${title}
+
+关闭当前网页
+    Close Browser
+
+设定主贷人性别
+    [Arguments]    ${gender}
+    Input Text    primary_borrower_gender    ${gender}
+
+设定主贷人年龄
+    [Arguments]    ${age}
+    Input Text    primary_borrower_age    ${age}
+
+设定房屋套次
+    [Arguments]    ${suites}
+    Input Text    primary_borrower_suites    ${suites}
+
+设定主贷人信用等级
+    [Arguments]    ${credit}
+    Input Text    primary_borrower_credit    ${credit}
+
+设定主贷人月收入
+    [Arguments]    ${monthlyIncome}
+    Input Text    primary_borrower_monthly_income    ${monthlyIncome}
+
+设定主贷人现有月贷款
+    [Arguments]    ${monthlyLoan}
+    Input Text    primary_borrower_current_debts    ${monthlyLoan}
+
+设定共同贷款人年龄
+    [Arguments]    ${age}
+    Input Text    co_borrower_age    ${age}
+
+设定共同贷款人性别
+    [Arguments]    ${gender}
+    Input Text    co_borrower_gender    ${gender}
+
+设定共同贷款人月收入
+    [Arguments]    ${monthlyIncome}
+    Input Text    co_borrower_monthly_income    ${monthlyIncome}
+
+设定共同贷款人现有贷款
+    [Arguments]    ${currentDebts}
+    Input Text    co_borrower_current_debts    ${currentDebts}
+
+设定共同贷款人和主贷人关系
+    [Arguments]    ${relation}
+    Input Text    co_borrower_relation    ${relation}
+
+设定共同贷款人是否房产所有人
+    [Arguments]    ${isHost}
+    Input Text    co_borrower_is_host    ${isHost}
+
+设定房龄
+    [Arguments]    ${age}
+    Input Text    house_age    ${age}
+
+信用检查结果应该是
+    [Arguments]    ${result}
+    ${rtn}=    get value    check_result_credit
+    should be equal    ${rtn}    ${result}
+
+住房套数合规检查结果应该是
+    [Arguments]    ${result}
+    Textfield Value Should Be    check_result_suites    ${result}
+
+共同贷款人合规检查结果应该是
+    [Arguments]    ${resut}
+    ${rtn}=    get value    co_borrower_check_result
+    should be equal    ${rtn}    ${result}
+
+实用利率倍数应该是
+    [Arguments]    ${result}
+    Textfield Value Should Be    result_interests    ${result}
+
+最大贷款年限应该是
+    [Arguments]    ${result}
+    Textfield Value Should Be    result_years    ${result}
+
+最大月还款额应该是
+    [Arguments]    ${result}
+    Textfield Value Should Be    result_amount    ${result}
+
+提交审核
+    Click Button    submit-checking
+    Comment    sleep    1s

@@ -10,7 +10,7 @@ exports.getPeriodLimit = function getPeriodLimit(age,gender,
 function maxLeftEarnableYears(age,gender)
 {
 	var leftEarnableYears;
-	if (gender=='male')
+	if (gender=='男')
 		leftEarnableYears = 65-age;
 	else
 		leftEarnableYears = 60-age;

@@ -1,0 +1,18 @@
+*** Settings ***
+Resource          resource.txt
+
+*** Test Cases ***
+共同贷款人资格审查
+    [Tags]    completed
+    [Template]    接口调用
+    父母    是    符合
+    父母    否    不符合
+
+*** Keywords ***
+接口调用
+    [Arguments]    ${releation}    ${is_host}    ${return_value}
+    connect to server
+    ${resp}    Get    loan    /api/check/co-loanee/${releation}/${is_host}
+    ${jsondata}=    To JSON    ${resp.content}
+    ${result}    Collections.Get From Dictionary    ${jsondata}    eligibility status
+    Should Be Equal    ${result}    ${return_value}

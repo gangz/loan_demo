@@ -1,0 +1,35 @@
+*** Settings ***
+Documentation     对于“共同贷款人”，不仅要求是为“贷款人”的直系亲属(夫妻、子女、父母)，还必须为住房贷款抵押物的房产所有者之一。
+...               主贷人和共同贷款人是夫妻关系除外。即使房产证上只有夫妻一方的名字，另一方也可以作为住房贷款的“共同贷款人”。
+Suite Setup       打开首页
+Suite Teardown    关闭当前网页
+Test Setup
+Test Teardown
+Test Template     共同贷款人资格审查流程
+Resource          resource.txt
+
+*** Test Cases ***    主贷关系      共同拥有人        是否符合
+共同贷款人是夫妻关系时不管是否共同产权人都符合要求
+                      [Tags]    completed
+                      夫妻        是            符合
+                      夫妻        否            符合
+
+共同贷款人是夫妻外的直系亲属时必须是共同产权所有人
+                      [Tags]    completed
+                      父母        是            符合
+                      父母        否            不符合
+                      子女        是            符合
+                      子女        否            不符合
+
+共同贷款人是非直系亲属不可以只直系亲属外的其它人
+                      [Tags]    completed
+                      其它        是            不符合
+                      其它        否            不符合
+
+*** Keywords ***
+共同贷款人资格审查流程
+    [Arguments]    ${relation}    ${is_host}    ${result}
+    设定共同贷款人和主贷人关系    ${relation}
+    设定共同贷款人是否房产所有人    ${is_host}
+    提交审核
+    共同贷款人合规检查结果应该是    ${result}
