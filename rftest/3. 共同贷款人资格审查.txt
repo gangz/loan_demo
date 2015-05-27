@@ -21,8 +21,7 @@ Resource          resource.txt
                       子女        是            符合
                       子女        否            不符合
 
-共同贷款人是非直系亲属不可以只直系亲属外的其它人
-                      [Tags]    completed
+共同贷款人不可以是直系亲属外的其它人    [Tags]    completed
                       其它        是            不符合
                       其它        否            不符合
 
