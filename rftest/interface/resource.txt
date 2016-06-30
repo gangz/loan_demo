@@ -1,6 +1,7 @@
 *** Settings ***
 Library           Collections
 Library           RequestsLibrary
+Library           Selenium2Library
 
 *** Keywords ***
 connect to server
